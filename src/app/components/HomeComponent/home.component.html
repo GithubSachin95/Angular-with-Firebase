@@ -1,0 +1,30 @@
+<div class="container" *ngIf="isLoggedIn$ | async">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Firebase</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" [routerLink]="['/home/filestorage']">File Storage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/home/login']">Real time database</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Firebase Database</a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="#">Hosting</a>
+              </li>
+          </ul>
+    
+        </div>
+      </nav>
+      </div>
+      <div class="container">
+      <router-outlet></router-outlet>
+    </div>
