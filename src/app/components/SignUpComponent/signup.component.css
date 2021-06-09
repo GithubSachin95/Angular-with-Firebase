@@ -1,0 +1,12 @@
+.SignUpContainer{
+    margin :auto;
+    width: 60%;
+    padding: 30px;
+    border : 3px solid black;
+    }
+    
+    
+    .LoginMethods{
+    
+        margin-top: 10px;
+    }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'login',
@@ -9,7 +10,7 @@ export class LoginComponent {
   Username : string = "p2s2.home@gmail.com";
   password : string = "P2S2@1234";
 
-  constructor(private auth : AuthService){
+  constructor(private auth : AuthService , private router : Router){
 
 
   }
@@ -29,6 +30,9 @@ export class LoginComponent {
 
     console.log("Login with Facebook");
     this.auth.loginFacebook();
+  }
+  NavigateToSignup(){
+    this.router.navigate(['/signup']);
   }
 
 }

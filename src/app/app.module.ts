@@ -35,18 +35,18 @@ export const firebaseConfig = {
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo:'login' },
-  { path :'login', component : LoginComponent},
   { path: 'signup', component: SignUpComponent },
+  
   { path :'home', component: HomeComponent , children: [
     {path : 'filestorage', component : FileStorageComponent},
-    { path : 'login' , component : LoginComponent}
-  ]}
+    
+  ]},{ path :'login', component : LoginComponent}
 ];
 
 
 @NgModule({
   declarations: [
-    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadFileComponent
+    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadFileComponent, SignUpComponent
   ],
   imports: [
     BrowserModule,
