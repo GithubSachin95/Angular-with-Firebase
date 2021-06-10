@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   }
 
   logout(){
-
+    console.log("Logout Action")
   }
 
 }
