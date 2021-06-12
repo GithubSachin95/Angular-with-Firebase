@@ -7,7 +7,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-
+import { AngularFirePerformanceModule } from '@angular/fire/performance';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -58,7 +58,8 @@ const routes: Routes = [
     AngularFireAuthModule, // auth
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    RouterModule
+    RouterModule,
+    AngularFirePerformanceModule
 
 
   ],

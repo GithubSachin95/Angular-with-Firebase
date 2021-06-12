@@ -19,7 +19,7 @@ export class SignUpComponent {
   }
   Signup(){ 
     console.log("Login with Normal user id and password");
-    this.auth.signUp(this.Username,this.password);
+   // this.auth.signUp(this.Username,this.password);
 
 }
 

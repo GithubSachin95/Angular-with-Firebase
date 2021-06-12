@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
-
+import firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { FileUpload } from '../models/file-upload';
@@ -10,8 +10,8 @@ import { FileUpload } from '../models/file-upload';
   providedIn: 'root'
 })
 export class FileUploadService {
-private basePath = '/uploads';
-
+  private basePath = '/uploads';
+  perf = firebase.performance();
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
 
   pushFileToStorage(fileUpload: FileUpload): Observable<number> {
@@ -37,8 +37,12 @@ private basePath = '/uploads';
   }
 
   getFiles(numberItems): AngularFireList<FileUpload> {
+
+    const trace = this.perf.trace('getFiles');
+    trace.start();
     return this.db.list(this.basePath, ref =>
       ref.limitToLast(numberItems));
+      
   }
 
   deleteFile(fileUpload: FileUpload): void {

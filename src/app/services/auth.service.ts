@@ -5,27 +5,15 @@ import { Router } from '@angular/router';
 import firebase from 'firebase';
 import { BehaviorSubject } from 'rxjs';
 
+
 @Injectable({
     providedIn:  'root'
 })
-export class AuthService {
 
-    private  actionCodeSettings = {
-        url: 'https://www.example.com/?email=' + 'dukale.sachin@gmail.com',
-        iOS: {
-          bundleId: 'com.example.ios'
-        },
-        android: {
-          packageName: 'com.example.android',
-          installApp: true,
-          minimumVersion: '12'
-        },
-        handleCodeInApp: true,
-        // When multiple custom dynamic link domains are defined, specify which
-        // one to use.
-        dynamicLinkDomain: "localhost"
-      };
+export class AuthService {
+    
     private loggedIn = new BehaviorSubject<boolean>(false);
+    perf = firebase.performance();
     constructor(public afAuth:  AngularFireAuth, public  router:  Router) {}
     get isLoggedIn() {
         if(localStorage.getItem('user') != null){
@@ -40,10 +28,23 @@ export class AuthService {
       }
 
     async login(email:string,password: string){
-        var result = await this.afAuth.signInWithEmailAndPassword(email, password);
-        localStorage.setItem('user','active');
-        this.router.navigate(['/home']);
-        this.loggedIn.next(true);
+        const trace = this.perf.trace('userLogin');
+        trace.start();
+
+        try {
+            const credential = await this.afAuth.signInWithEmailAndPassword(email, password);
+            trace.putAttribute('verified', `${credential.user.email}`);
+            trace.stop();
+            localStorage.setItem('user','active');
+            this.router.navigate(['/home']);
+            this.loggedIn.next(true);
+        }
+        catch(err)
+        { 
+            trace.putAttribute('errorCode', err.code);
+            trace.stop();
+        }
+        
     }
 
     async loginGoogle(){
@@ -61,10 +62,10 @@ export class AuthService {
         this.router.navigate(['/home']);
     }
 
-    async signUp(email:string,password: string){
-        var result = await this.afAuth.createUserWithEmailAndPassword(email, password);
-        this.afAuth.sendSignInLinkToEmail(email, this.actionCodeSettings);
-    }
+    // async signUp(email:string,password: string){
+    //     var result = await this.afAuth.createUserWithEmailAndPassword(email, password);
+    //     this.afAuth.sendSignInLinkToEmail(email, this.actionCodeSettings);
+    // }
 
     async logout(){
         this.loggedIn.next(false);
