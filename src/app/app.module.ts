@@ -46,7 +46,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadFileComponent, SignUpComponent
+    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadDetailsComponent, UploadFileComponent, SignUpComponent
   ],
   imports: [
     BrowserModule,

@@ -31,10 +31,18 @@ export class UploadFileComponent {
     this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
       percentage => {
         this.percentage = Math.round(percentage);
+
+        setTimeout(() => {
+          if(this.percentage == 100)
+          { 
+            this.currentFileUpload = null;
+          }
+        }, 5000);
       },
       error => {
         console.log(error);
       }
     );
+    
   }
   }

@@ -17,6 +17,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(){
     this.isLoggedIn$ = this.auth.isLoggedIn;
   }
+
+
+   logout = () => {
+    this.auth.logout();
+  }
   
+  navigation = (input) =>{
+    console.log(input);
+  }
   
 }

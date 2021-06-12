@@ -26,34 +26,50 @@ export class AuthService {
         dynamicLinkDomain: "localhost"
       };
     private loggedIn = new BehaviorSubject<boolean>(false);
-    constructor(public  afAuth:  AngularFireAuth, public  router:  Router) {}
+    constructor(public afAuth:  AngularFireAuth, public  router:  Router) {}
     get isLoggedIn() {
+        if(localStorage.getItem('user') != null){
+            this.loggedIn.next(true);
+            
+        }
+        else if( localStorage.getItem('user') == null || localStorage.getItem('user') == undefined){{
+            this.loggedIn.next(false);
+            this.router.navigate(['/login']);
+        }}
         return this.loggedIn.asObservable(); // {2}
       }
 
     async login(email:string,password: string){
         var result = await this.afAuth.signInWithEmailAndPassword(email, password);
+        localStorage.setItem('user','active');
         this.router.navigate(['/home']);
         this.loggedIn.next(true);
-
     }
 
     async loginGoogle(){
-        await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-        this.loggedIn.next(true);
+            await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+            localStorage.setItem('user','active');
+            this.loggedIn.next(true);
             this.router.navigate(['/home']);
         }
 
     async loginFacebook(){
 
         await this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+        localStorage.setItem('user','active');
         this.loggedIn.next(true);
         this.router.navigate(['/home']);
     }
 
     async signUp(email:string,password: string){
-        var result = await this.afAuth.createUserWithEmailAndPassword(email, password)
-        this.afAuth.sendSignInLinkToEmail(email, this.actionCodeSettings );
+        var result = await this.afAuth.createUserWithEmailAndPassword(email, password);
+        this.afAuth.sendSignInLinkToEmail(email, this.actionCodeSettings);
+    }
+
+    async logout(){
+        this.loggedIn.next(false);
+        localStorage.removeItem('user');
+        this.router.navigate(['/login']);
     }
     }
 
