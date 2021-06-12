@@ -7,7 +7,7 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
+  selectedNav : String;
   isLoggedIn$: Observable<boolean>;
   constructor(private auth : AuthService){
 
@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
   }
   
   navigation = (input) =>{
-    console.log(input);
+    console.log(input.target.id);
+    this.selectedNav = input.target.id;
   }
   
 }

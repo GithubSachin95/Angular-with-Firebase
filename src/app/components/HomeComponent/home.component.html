@@ -7,14 +7,14 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/home/filestorage']" #navigation (click)="navigation(navigation)">File Storage</a>
+            <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active': selectedNav =='filestorage'}" [routerLink]="['/home/filestorage']" id="filestorage" (click)="navigation($event)">File Storage </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/home/login']">Real time database</a>
+              <a class="nav-link" [ngClass]="{'active': selectedNav =='realdatabase'}" [routerLink]="['/home/realdatabase']" id="realdatabase" (click)="navigation($event)">Real time database</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Firebase Database</a>
+                <a class="nav-link" [ngClass]="{'active': selectedNav =='firebasedatabase'}" [routerLink]="['/home/firebasedatabase']" id="firebasedatabase" (click)="navigation($event)">Firebase Database</a>
               </li>
     
               <li class="nav-item">
