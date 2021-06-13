@@ -1,4 +1,4 @@
- import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -44,23 +44,16 @@ const routes: Routes = [
   { path :'home', component: HomeComponent , children: [
     {path : 'filestorage', component : FileStorageComponent},
     {path : 'firestore', component : FireStoreComponent},
-  ]},{ path :'firestore', component : FileStorageComponent}
-  { path :'home', component: HomeComponent , children: [
-    {path : 'filestorage', component : FileStorageComponent},
+    {path : 'firebasedatabase', component : FireStoreComponent},
     {path : 'adduser', component : AdduserComponent},
     {path : 'showuser', component : ShowuserComponent},
-  ]},{ path :'login', component : LoginComponent}
+  ]},
 ];
 
 
 @NgModule({
   declarations: [
-<<<<<<< HEAD
-    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadDetailsComponent, UploadFileComponent, SignUpComponent, FireStoreComponent
-  ],
-=======
-    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadDetailsComponent, UploadFileComponent, SignUpComponent, AdduserComponent, ShowuserComponent  ],
->>>>>>> 59217ed1d4ca8fb99fef600412f546124b332c2d
+    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadDetailsComponent, UploadFileComponent, SignUpComponent, AdduserComponent, ShowuserComponent , FireStoreComponent ],
   imports: [
     BrowserModule,
     FormsModule,
