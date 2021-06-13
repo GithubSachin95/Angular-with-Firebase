@@ -20,6 +20,8 @@ import { UploadFileComponent } from './components/UploadFileComponent/uploadfile
 import { UploadListComponent } from './components/UploadListComponent/uploadlist.component'
 import { FileStorageComponent } from './components/FileStorageComponent/filestorage.component';
 import { UploadDetailsComponent } from './components/UploadDetailsComponent/uploaddetails.component';
+import { FirestoreDataService } from './services/firestore-data.service';
+import { FireStoreComponent } from './components/FireStoreComponent/firestore.component'
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 export const firebaseConfig = {
   apiKey: "AIzaSyB3wngSpBQr3RbAOoD7Nk_-wbRICo_9JUg",
@@ -36,17 +38,17 @@ export const firebaseConfig = {
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo:'login' },
   { path: 'signup', component: SignUpComponent },
-  
+  { path : 'login', component: LoginComponent },
   { path :'home', component: HomeComponent , children: [
     {path : 'filestorage', component : FileStorageComponent},
-    
-  ]},{ path :'login', component : LoginComponent}
+    {path : 'firestore', component : FireStoreComponent},
+  ]},{ path :'firestore', component : FileStorageComponent}
 ];
 
 
 @NgModule({
   declarations: [
-    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadDetailsComponent, UploadFileComponent, SignUpComponent
+    AppComponent,LoginComponent, HomeComponent, FileStorageComponent, UploadListComponent, UploadDetailsComponent, UploadFileComponent, SignUpComponent, FireStoreComponent
   ],
   imports: [
     BrowserModule,
