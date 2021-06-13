@@ -1,4 +1,8 @@
-export class User {  
-    public constructor(public id: string,public firstname: string,public lastname: string,public mobile_no: string) {  
-      }  
-    } 
+export class User {
+    key: string;
+    firstName: string;
+    lastName: string;
+    email:string;
+    age: number;
+    contactNumber: string;
+}

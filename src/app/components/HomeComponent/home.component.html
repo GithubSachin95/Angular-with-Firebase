@@ -1,17 +1,35 @@
 <div class="container" *ngIf="isLoggedIn$ | async">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Firebase</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" [ngClass]="{'active': selectedNav =='filestorage'}" [routerLink]="['/home/filestorage']" id="filestorage" (click)="navigation($event)">File Storage </a>
+  <nav class="navbar navbar-expand-lg navbar-primary bg-">
+      <a class="navbar-brand" href="#">Firebase</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{'active': selectedNav =='filestorage'}" [routerLink]="['/home/filestorage']" id="filestorage" (click)="navigation($event)">File Storage </a>
+          </li>
+
+          <li class="nav-item">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Real Time Database
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/home/adduser']">Add User</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" [routerLink]="['/home/showuser']">Show Users</a></li>
+          </ul>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{'active': selectedNav =='realdatabase'}" [routerLink]="['/home/realdatabase']" id="realdatabase" (click)="navigation($event)">Real time database</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" [ngClass]="{'active': selectedNav =='firebasedatabase'}" [routerLink]="['/home/firebasedatabase']" id="firebasedatabase" (click)="navigation($event)">Firebase Database</a>
             </li>
+  
             <li class="nav-item">
-              <a class="nav-link" [ngClass]="{'active': selectedNav =='realdatabase'}" [routerLink]="['/home/realdatabase']" id="realdatabase" (click)="navigation($event)">Real time database</a>
+              <a class="nav-link" href="#">Hosting</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [ngClass]="{'active': selectedNav =='firebasedatabase'}" [routerLink]="['/home/firestore']" id="firebasedatabase" (click)="navigation($event)">Firebase Database</a>
@@ -26,7 +44,13 @@
         <button class="btn btn-danger" (click)="logout()">Logout</button>
       </nav>
     
+        </ul>
+  
       </div>
-      <div class="container">
-      <router-outlet></router-outlet>
+      <button class="btn btn-danger" (click)="logout()">Logout</button>
+    </nav>
+  
     </div>
+    <div class="container">
+    <router-outlet></router-outlet>
+  </div>
