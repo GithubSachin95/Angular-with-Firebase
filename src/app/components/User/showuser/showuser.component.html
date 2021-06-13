@@ -1,0 +1,132 @@
+<div *ngIf="users.length">
+    <h3>Users</h3>
+    <br>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Contact No</th>
+            <th>  &nbsp; &nbsp;&nbsp;Options</th>
+           
+
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+             
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.age}}</td>
+              <td>{{user.contactNumber}}</td>
+              <td>
+                <button type="button" style="font-size:10px" class="btn btn-primary" (click)="setUserDetails(user)">
+                  Edit User 
+                </button>
+                &nbsp; &nbsp;
+                  <button type="button" class="btn btn-danger" 
+                  (click)="deleteUser(user)" >&times;</button>
+                
+              </td>
+              
+            </tr>
+        </tbody>
+    </table>
+   
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="delete-modal">
+
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">Delete!</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    
+    <!-- Modal body -->
+    <div class="modal-body">
+        <div *ngIf="deletedUser">
+          <p [hidden] = "returnedMessage">
+            Do you want delete a user with id = {{deletedUser.key}}
+          </p>
+          <p [hidden] = "!returnedMessage">
+            {{returnedMessage}}
+          </p>
+        </div>
+    </div>
+    
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button [hidden] = "returnedMessage" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+     
+      <button [hidden] = "!returnedMessage" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>				
+    </div>
+  </div>
+  </div>
+
+<div *ngIf="showUser">
+    <h3>Update User</h3>
+    <form (ngSubmit)="updateUser()"> 
+        <!-- ID -->   
+        <div class="form-group">
+          <label for="id">Id:</label>
+          <input type="numer" class="form-control"
+                    id="id" required [(ngModel)]="showUser.key" name="id" disabled>
+        </div>      
+        <!-- First name -->   
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" class="form-control" placeholder="Enter Firstname" 
+                    id="firstName" required [(ngModel)]="showUser.firstName" name="firstName">
+        </div>
+        <!-- Last name -->
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" placeholder="Enter Lastname" 
+                      id="lastName" required [(ngModel)]="showUser.lastName" name="lastName">
+        </div>  
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" placeholder="Enter email" 
+                      id="email" required [(ngModel)]="showUser.email" name="email">
+        </div>        
+        <!-- Age -->
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" class="form-control" placeholder="Enter Age" 
+                      id="age" required [(ngModel)]="showUser.age" name="age">
+        </div>
+       <!-- Last name -->
+       <div class="form-group">
+        <label for="contactNumber">Last Name:</label>
+        <input type="text" class="form-control" placeholder="Enter Contact No" 
+                  id="contactNumber" required [(ngModel)]="showUser.contactNumber" name="contactNumber">
+    </div>  
+        <button type="submit" class="btn btn-success">Update</button>
+      </form>
+</div>
+
+
+<script>
+  let pathname = window.location.pathname;
+  if(pathname == ""){
+      $(".nav .nav-item a:first").addClass("active");
+      $(".nav .nav-item a:last").removeClass("active");
+  } else if (pathname == "/customers") {
+      $(".nav .nav-item a:last").addClass("active");
+      $(".nav .nav-item a:first").removeClass("active");
+  }
+  alert("ok");
+</script>
