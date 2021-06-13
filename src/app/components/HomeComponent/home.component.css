@@ -1,3 +1,7 @@
 .active{
     font-weight: bold;
 }
+
+.adjustMargin{
+    margin-left: 200px;
+}
