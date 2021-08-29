@@ -1,11 +1,22 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+   <a class="navbar-brand" style="color: whitesmoke;" href="#">
+    <img src="../../../assets/logo.png"  height="80" alt="" loading="lazy">
+    </a>
+    </nav>
+  </div>
 
+    <div class="container-fluid">
+        <br>
 
-    <div class="Container-fluid">
-        <h2>Firebase Login </h2>
+        
         <div class="LoginContainer">
         <div class="LoginMethods">
+          <h2 style="text-align:center">Log In!</h2>
+          <br>
         <form >
             <div class="form-group">
+              
               <label for="exampleInputEmail1">Email address</label>
               <input type="email" class="form-control" name="Username" [(ngModel)]="Username" placeholder="Enter email" >
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -14,10 +25,12 @@
               <label for="exampleInputPassword1">Password</label>
               <input type="password"  name="password" [(ngModel)]="password"class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            
-            <button type="submit" (click)="Login()" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
-          </form>
+            <br>
+            <button type="submit" (click)="Login()" class="btn btn-primary" style="margin-top: 10px; margin-left: 180px;">Submit</button>
+          <br> <br></form>
         </div>
+        <div class="row">
+          <div class="col">
           <div class="LoginMethods">
                 
             <button class="btn btn-outline-dark" (click)="LoginGoogle()"  type="button" style="text-transform:none">
@@ -25,15 +38,22 @@
                 Login with Google
             </button>
           </div>
+        </div>
+        <div class="col">
+
           <div class="LoginMethods">
-            
-            <button class="btn btn-primary" (click)="LoginFacebook()"  type="button" style="text-transform:none">
+                
+            <button class="btn btn-outline-dark" (click)="LoginFacebook()"  type="button" style="text-transform:none">
+                <img width="20px" style="margin-bottom:3px; margin-right:5px"  src="https://upload.wikimedia.org/wikipedia/commons/c/c2/F_icon.svg" />
                 Login with Facebook
             </button>
           </div>
-          <div class="LoginMethods">
-            <a href= "/signup" (click)="NavigateToSignup()">Sign up with new User</a>
+
+
           </div>
+        </div>
+        <br> <br>
+
     </div>
     
 </div>

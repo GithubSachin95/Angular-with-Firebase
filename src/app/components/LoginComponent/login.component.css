@@ -1,12 +1,31 @@
 .LoginContainer{
-margin :auto;
-width: 60%;
-padding: 30px;
-border : 3px solid black;
-}
 
-
-.LoginMethods{
-
-    margin-top: 10px;
-}
+    width: 60%;
+    padding-left: 230px;
+    padding-right: 200px;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    
+    border-radius: 20px;
+    margin-left: 240px;
+    border-color: black;
+    border-width: 4px;
+    
+    }
+    
+    
+    
+    
+    .LoginMethods{
+    
+        margin-top: 10px;
+    }
+    
+    
+    .container-fluid, .container {
+       
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+    

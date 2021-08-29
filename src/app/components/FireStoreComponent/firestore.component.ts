@@ -12,7 +12,7 @@ export class FireStoreComponent implements OnInit
   receivedUsers : any; 
   Users = new Array();
   model = { firstName: '', lastName: '', mobile: '' };
- 
+  showUsers : boolean = false;
   constructor(public fireService : FirestoreDataService) {  
   }  
     
@@ -36,9 +36,8 @@ export class FireStoreComponent implements OnInit
 
     userSubmit() { 
       this.fireService.addUser(this.model);  
-      this.model.firstName = '';  
-      this.model.lastName = '';  
-      this.model.mobile = ''; 
+
       
     }
+
 }
